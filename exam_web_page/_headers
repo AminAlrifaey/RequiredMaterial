@@ -1,0 +1,3 @@
+# Force download for PDF files in the /files/ directory
+/files/*.pdf
+  Content-Disposition: attachment

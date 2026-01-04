@@ -1,0 +1,310 @@
+:root {
+    /* Brand Colors */
+    --primary-green: #054239;
+    --dark-green: #002623;
+    --medium-green: #428177;
+    --gold: #b9a779;
+    --light-wheat: #edebe0;
+    --accent-gold: #D4AF37;
+
+    /* Spacing */
+    --container-width: 1200px;
+    --padding-mobile: 1.5rem;
+    --padding-desktop: 3rem;
+
+    /* Shadows */
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Amiri', 'Times New Roman', serif;
+    background-color: var(--light-wheat);
+    color: var(--dark-green);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Typography Overrides for English */
+[lang="en"] {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Background Pattern */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(var(--gold) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Header Section */
+header {
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%);
+    color: var(--gold);
+    padding: 4rem 1rem;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-bottom: 5px solid var(--gold);
+}
+
+.logo-container {
+    max-width: 150px;
+    margin: 0 auto 2rem;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.logo-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.header-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.header-content h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #e2dcc8;
+    font-family: 'Playfair Display', serif;
+    direction: ltr;
+    /* English text LTR */
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 3rem var(--padding-mobile);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary-green);
+    position: relative;
+    padding-bottom: 2rem;
+    /* Increased padding */
+}
+
+.section-title::after {
+    content: "❖";
+    position: absolute;
+    bottom: -0.5rem;
+    /* Adjusted position */
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    font-size: 1.5rem;
+    background-color: var(--light-wheat);
+    padding: 0 15px;
+    /* More breathing room */
+}
+
+.section-title::before {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 2px;
+    background: var(--gold);
+}
+
+/* Subjects Grid */
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Subject Card */
+.subject-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(185, 167, 121, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.subject-card::top {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: center;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+    border-color: var(--gold);
+}
+
+.subject-card:hover::top,
+.subject-card:hover::before {
+    /* Fallback for older browsers if needed, but using pseudo-element for top border effect */
+    transform: scaleX(1);
+}
+
+/* Card Header (Number) */
+.card-number {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgba(185, 167, 121, 0.15);
+    line-height: 1;
+    user-select: none;
+}
+
+.card-content {
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+    direction: rtl;
+    /* Build internal content RTL by default */
+}
+
+/* Book Icon */
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+}
+
+/* Subject Titles */
+.subject-ar {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.subject-en {
+    font-size: 1.1rem;
+    color: #666;
+    font-family: 'Playfair Display', serif;
+    display: block;
+    direction: ltr;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-green);
+    color: var(--light-wheat);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: bold;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .header-content h2 {
+        font-size: 1.1rem;
+    }
+
+    .subjects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Download Button Styles */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--primary-green);
+    color: var(--gold);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: 1px solid var(--gold);
+    width: 100%;
+}
+
+.download-btn:hover {
+    background-color: var(--dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(5, 66, 57, 0.2);
+    color: #fff;
+    border-color: var(--accent-gold);
+}
+
+.download-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.download-btn:hover svg {
+    transform: translateY(3px);
+}
+
+.btn-text-en {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-right: 0.5rem;
+}
